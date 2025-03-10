@@ -6,13 +6,10 @@ const links = [
   { name: 'About', path: '/about' },
   { name: 'Contact', path: '/contact' }
 ];
-
 const isMenuOpen = ref(false);
-
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
-
 const closeMenu = () => {
   isMenuOpen.value = false;
 };
@@ -49,7 +46,10 @@ const closeMenu = () => {
   padding: 10px 20px;
   background-color: $primary-color;
   color: $text-color;
-  position: relative;
+  position: sticky;
+  top: 0;
+  width: auto;
+  z-index: 1000;
   .brand {
     display: flex;
     align-items: center;
@@ -112,7 +112,6 @@ const closeMenu = () => {
     }
   }
 
-  /* Mobile View */
   @include mobile {
     .nav-links {
       position: absolute;
