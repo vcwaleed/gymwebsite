@@ -17,7 +17,7 @@ const socialLinks = [
           Suffer now and live the rest of your life as a champion.” 
           — Mohammad Ali
         </span>
-        <button class="btn_nav">Join Us</button>
+        <button class="btn_nav">Get start</button>
       </div>
     </div>
     <div class="social-icons">
@@ -74,7 +74,7 @@ const socialLinks = [
       background-color: white;
       color: $primary-color;
       padding: 12px 20px;
-      font-size: 1rem;
+      font-size: 1.2rem;
       border: none;
       cursor: pointer;
       border-radius: 10px;
