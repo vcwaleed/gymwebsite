@@ -3,7 +3,7 @@ import { ref } from 'vue';
 
 const links = [
   { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
+  { name: 'Calculate BMI', path: '/bmi' },
   { name: 'Contact', path: '/contact' }
 ];
 const isMenuOpen = ref(false);

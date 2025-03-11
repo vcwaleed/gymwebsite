@@ -63,7 +63,7 @@ const processSteps = ref([
         }
 
         .icon {
-            background-color: white;
+            background-color: gray;
             padding: 20px;
             font-size: 40px;
             border-radius: 60px;

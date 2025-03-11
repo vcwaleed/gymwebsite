@@ -17,7 +17,7 @@ const socialLinks = [
           Suffer now and live the rest of your life as a champion.” 
           — Mohammad Ali
         </span>
-        <button class="btn_nav">Get start</button>
+        <button  @click="$router.push('/bmi')" class="btn_nav">Get start</button>
       </div>
     </div>
     <div class="social-icons">
