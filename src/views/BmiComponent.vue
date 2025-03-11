@@ -19,7 +19,6 @@ const { person_detail, bmi_person } = storeToRefs(bmi_state);
           <label>Name</label>
           <input type="text" placeholder="Your name" v-model="person_detail.name" class="input-field">
         </div>
-
         <div class="input-group">
   <label>Gender</label>
   <div class="radio-group">
@@ -33,25 +32,20 @@ const { person_detail, bmi_person } = storeToRefs(bmi_state);
     </label>
   </div>
 </div>
-
         <div class="input-group">
           <label>Age</label>
           <input type="number" placeholder="Years" v-model="person_detail.age" class="input-field">
         </div>
-
         <div class="input-group">
           <label>Weight (kg)</label>
           <input type="number" placeholder="Kilograms" v-model="person_detail.weight" class="input-field">
         </div>
-
         <div class="input-group full-width">
           <label>Height (cm)</label>
           <input type="number" placeholder="Centimeters" v-model="person_detail.height" class="input-field">
         </div>
       </div>
-
       <button @click="bmi_state.bmi_calculate" class="calculate-btn">Calculate BMI</button>
-
       <div v-if="bmi_person > 0" class="result-card">
         <div class="result-content">
           <h3>Your BMI Score</h3>
@@ -73,7 +67,8 @@ const { person_detail, bmi_person } = storeToRefs(bmi_state);
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: url('../assets/ooo.jpg') no-repeat  center;
+  background-size: cover;
 }
 
 .calculator-card {
@@ -198,4 +193,6 @@ const { person_detail, bmi_person } = storeToRefs(bmi_state);
     background: #38a169;
   }
 }
+
+
 </style>
