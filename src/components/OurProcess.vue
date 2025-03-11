@@ -1,7 +1,5 @@
 <script setup>
 import { ref } from 'vue';
-
-// Define the process steps with icons
 const processSteps = ref([
     { name: "Analyze Your Goal", icon: "📊" },
     { name: "Work Hard", icon: "💪" },

@@ -171,7 +171,6 @@ const { person_detail, bmi_person } = storeToRefs(bmi_state);
 .calculator-card {
   background: white;
   padding: 2.5rem;
-  border-radius: 1.5rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 500px;
