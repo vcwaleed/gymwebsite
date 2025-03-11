@@ -8,7 +8,12 @@ const bmi_person =ref(0);
     age: '',
     weight: '',
     height: '',
-    gender: ""
+    gender: '',
+    location: '',
+    phone_number:'',
+    email_address:'',
+    personal_tra:'',
+    membership:''
  });
  function bmi_calculate() {
     if (!person_detail.weight || !person_detail.height || person_detail.height <= 0) {

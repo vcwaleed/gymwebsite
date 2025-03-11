@@ -50,7 +50,7 @@ const { person_detail, bmi_person } = storeToRefs(bmi_state);
         <div class="result-content">
           <h3>Your BMI Score</h3>
           <div class="bmi-value">{{ bmi_person }}</div>
-          <button class="continue-btn">View Health Plan</button>
+          <button @click="$router.push('/registrationfrom')" class="continue-btn">View Health Plan</button>
         </div>
       </div>
     </div>

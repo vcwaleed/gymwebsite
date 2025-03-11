@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import HomePage from "./components/HomePage.vue"
 import BmiComponent from './views/BmiComponent.vue'
+import RegistrationFrom from './views/RegistrationFrom.vue'
 
 const routes=[
     {
@@ -12,6 +13,11 @@ const routes=[
         name:"BmiComponent",
         path:'/bmi',
         component:BmiComponent
+    },
+    {
+        name:"RegistrationFrom",
+        path:"/registrationfrom",
+        component:RegistrationFrom
     }
 
 ]

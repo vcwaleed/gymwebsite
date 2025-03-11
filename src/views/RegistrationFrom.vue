@@ -1,0 +1,293 @@
+<script setup>
+import NavbarPage from "../components/NavbarPage.vue";
+import FooterPage from "../components/FooterPage.vue";
+import { UseBmiState } from "../stores/bmicalculate";
+import { storeToRefs } from "pinia";
+
+const bmi_state = UseBmiState();
+const { person_detail, bmi_person } = storeToRefs(bmi_state);
+</script>
+
+<template>
+  <NavbarPage />
+  <section class="container">
+    <div class="calculator-card">
+      <h1 class="title">Gym Registration</h1>
+
+      <div class="form-grid">
+        <div class="input-group">
+          <label>Name</label>
+          <input
+            type="text"
+            placeholder="Your name"
+            v-model="person_detail.name"
+            class="input-field"
+          />
+        </div>
+        <div class="input-group">
+          <label>Gender</label>
+          <div class="radio-group">
+            <label>
+              <input type="radio" value="male" v-model="person_detail.gender" />
+              Male
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="female"
+                v-model="person_detail.gender"
+              />
+              Female
+            </label>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Age</label>
+          <input
+            type="number"
+            placeholder="Years"
+            v-model="person_detail.age"
+            class="input-field"
+          />
+        </div>
+        <div class="input-group">
+          <label>Weight (kg)</label>
+          <input
+            type="number"
+            placeholder="Kilograms"
+            v-model="person_detail.weight"
+            class="input-field"
+          />
+        </div>
+        <div class="input-group">
+          <label>Height (cm)</label>
+          <input
+            type="number"
+            placeholder="Centimeters"
+            v-model="person_detail.height"
+            class="input-field"
+          />
+        </div>
+        <div class="input-group">
+          <label>Location</label>
+          <input
+            type="text"
+            placeholder="Enter you location"
+            v-model="person_detail.location"
+            class="input-field"
+          />
+        </div>
+        <div class="input-group">
+          <label>Phone Number</label>
+          <input
+            type="number"
+            placeholder="Enter your phone number"
+            v-model="person_detail.phone_number"
+            class="input-field"
+          />
+        </div>
+        <div class="input-group">
+          <label>Do you require a personal trainer?</label>
+          <div class="radio-group">
+            <label>
+              <input
+                type="radio"
+                value="no"
+                v-model="person_detail.personal_tra"
+              />
+              No
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="yes"
+                v-model="person_detail.personal_tra"
+              />
+              Yes
+            </label>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>BMI</label>
+          <input
+            type="number"
+            placeholder="Centimeters"
+            v-model="bmi_person"
+            class="input-field"
+            readonly
+          />
+        </div>
+        <div class="input-group">
+          <label>Membership Type ?</label>
+          <div class="radio-group">
+            <label>
+              <input
+                type="radio"
+                value="Regular"
+                v-model="person_detail.membership"
+              />
+              Regular
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="Pro"
+                v-model="person_detail.membership"
+              />
+              Pro
+            </label>
+          </div>
+        </div>
+     
+        <div class="input-group full-width">
+          <label>Email</label>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            v-model="person_detail.email_address"
+            class="input-field"
+          />
+        </div>
+      </div>
+      <button class="calculate-btn">Submit</button>
+    </div>
+  </section>
+  <FooterPage />
+</template>
+
+<style lang="scss" scoped>
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../assets/ooo.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.calculator-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.title {
+  text-align: center;
+  color: gray;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 4rem;
+  row-gap: 1rem;
+  margin-bottom: 2rem;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input-group {
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: gray;
+    font-weight: 500;
+  }
+}
+
+.input-field {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: $secondary-color;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    outline: none;
+  }
+}
+.radio-group {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.radio-group input[type="radio"] {
+  transform: scale(1.2);
+  accent-color: $secondary-color;
+}
+.full-width {
+  grid-column: span 2;
+
+  @include mobile {
+    grid-column: span 1;
+  }
+}
+
+.calculate-btn {
+  width: 100%;
+  padding: 1rem;
+  background: $secondary-color;
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.result-card {
+  margin-top: 2rem;
+  background: #f8f9fa;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+
+  h3 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .bmi-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #667eea;
+    margin: 1rem 0;
+  }
+}
+
+.continue-btn {
+  background: #48bb78;
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 0.75rem;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: #38a169;
+  }
+}
+</style>
