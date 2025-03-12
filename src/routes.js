@@ -4,6 +4,7 @@ import BmiComponent from './views/BmiComponent.vue'
 import RegistrationFrom from './views/RegistrationFrom.vue'
 import SignupPage from './views/SignupPage.vue'
 import LoginPage from './views/LoginPage.vue'
+import BmiList from './views/BmiList.vue'
 const routes=[
     {
         name: "HomePage",
@@ -29,6 +30,11 @@ const routes=[
         name:"LoginPage",
         path:"/login",
         component:LoginPage
+    },
+    {
+        name:"BmiList",
+        path:"/bmilist",
+        component:BmiList,
     }
 
 

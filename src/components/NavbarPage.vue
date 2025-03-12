@@ -5,7 +5,7 @@ const router = useRouter();
 const links = [
   { name: 'Home', path: '/' },
   { name: 'Calculate BMI', path: '/bmi' },
-  { name: 'Contact', path: '/contact' }
+  { name: 'BMI List', path: '/bmilist' }
 ];
 const isMenuOpen = ref(false);
 const toggleMenu = () => {
