@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-
+import { useRouter } from 'vue-router';
+const router = useRouter();
 const links = [
   { name: 'Home', path: '/' },
   { name: 'Calculate BMI', path: '/bmi' },
@@ -13,6 +14,11 @@ const toggleMenu = () => {
 const closeMenu = () => {
   isMenuOpen.value = false;
 };
+const logout = () => {
+  localStorage.removeItem("user-info"); 
+  localStorage.removeItem("token"); 
+  router.push("/login"); 
+};
 </script>
 <template>
   <nav class="navbar">
@@ -24,7 +30,7 @@ const closeMenu = () => {
         <a :href="link.path" class="nav-link">{{ link.name }}</a>
       </li>
     </ul>
-    <button class="btn_nav">Join US</button>
+    <button @click="logout" class="btn_nav">Logout</button>
     <button class="hamburger" @click="toggleMenu">
       <svg viewBox="0 0 100 80" width="25" height="25">
         <rect width="100" height="15" rx="8"></rect>

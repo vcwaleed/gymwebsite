@@ -3,9 +3,24 @@ import NavbarPage from "../components/NavbarPage.vue";
 import FooterPage from "../components/FooterPage.vue";
 import { UseBmiState } from "../stores/bmicalculate";
 import { storeToRefs } from "pinia";
-
+import { onMounted } from "vue";
+import axios from "axios";
 const bmi_state = UseBmiState();
 const { person_detail, bmi_person } = storeToRefs(bmi_state);
+onMounted(async () => {
+  const userInfo = JSON.parse(localStorage.getItem("user-info"));
+  if (userInfo?.email) {
+    try {
+      const response = await axios.get(`http://localhost:5000/bmidata?email=${userInfo.email}`);
+      if (response.data.length > 0) {
+        bmi_state.person_detail.name = response.data[0].name;
+        bmi_state.person_detail.gender= response.data[0].gender
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  }
+});
 </script>
 
 <template>
