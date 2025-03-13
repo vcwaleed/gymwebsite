@@ -13,8 +13,9 @@ onMounted(async () => {
     try {
       const response = await axios.get(`http://localhost:5000/bmidata?email=${userInfo.email}`);
       if (response.data.length > 0) {
-        bmi_state.person_detail.name = response.data[0].name;
-        bmi_state.person_detail.gender= response.data[0].gender
+        bmi_state.person_detail.name = response.data[response.data.length -1].name;
+        bmi_state.person_detail.gender= response.data[response.data.length-1].gender
+        bmi_state.person_detail.age= response.data[response.data.length-1].age
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
@@ -28,7 +29,6 @@ onMounted(async () => {
   <section class="container">
     <div class="calculator-card">
       <h1 class="title">BMI Calculator</h1>
-
       <div class="form-grid">
         <div class="input-group">
           <label>Name</label>
@@ -65,7 +65,7 @@ onMounted(async () => {
         <div class="result-content">
           <h3>Your BMI Score</h3>
           <div class="bmi-value">{{ bmi_person }}</div>
-          <button @click="$router.push('/registrationfrom')" class="continue-btn">View Health Plan</button>
+          <button @click="$router.push('/bmilist')" class="continue-btn">View BMI History</button>
         </div>
       </div>
     </div>
@@ -196,7 +196,7 @@ onMounted(async () => {
 }
 
 .continue-btn {
-  background: #48bb78;
+  background: $secondary-color;
   color: white;
   padding: 0.8rem 2rem;
   border-radius: 0.75rem;
@@ -205,7 +205,7 @@ onMounted(async () => {
   cursor: pointer;
 
   &:hover {
-    background: #38a169;
+    background: $secondary-color;
   }
 }
 

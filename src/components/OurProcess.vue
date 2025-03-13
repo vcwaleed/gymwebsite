@@ -26,6 +26,7 @@ const processSteps = ref([
 @use '../styles/mixins' as *;
 
 .main {
+    background-color: $text-color;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,7 +35,7 @@ const processSteps = ref([
 
     h1 { 
         font-size: 40px;
-        color: $text-color;
+        color: gray;
         margin-bottom: 20px;
     }
 
@@ -61,7 +62,7 @@ const processSteps = ref([
         }
 
         .icon {
-            background-color: gray;
+            background-color: $text-color;
             padding: 20px;
             font-size: 40px;
             border-radius: 60px;
@@ -74,7 +75,7 @@ const processSteps = ref([
         span {
             font-size: 16px;
             font-weight: bold;
-            color: $text-color;
+            color: gray;
         }
     }
 }

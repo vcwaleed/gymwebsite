@@ -1,19 +1,30 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import NavbarPage from "../components/NavbarPage.vue";
 import axios from "axios";
 const bmiData = ref([]);
-
 onMounted(async () => {
   const userInfo = JSON.parse(localStorage.getItem("user-info"));
   const userEmail = userInfo?.email;
   if (!userEmail) return;
+
   try {
     const response = await axios.get("http://localhost:5000/bmidata");
     bmiData.value = response.data.filter(entry => entry.email === userEmail);
   } catch (error) {
     console.error("Error fetching BMI data:", error);
   }
+});
+
+const averageBmi = computed(() => {
+  if (bmiData.value.length === 0) return 0;
+
+  const totalBmi = bmiData.value.reduce((sum, entry) => {
+    const bmiValue = parseFloat(entry.bmi);
+    return sum + (isNaN(bmiValue) ? 0 : bmiValue); 
+  }, 0);
+
+  return (totalBmi / bmiData.value.length).toFixed(2);
 });
 </script>
 
@@ -35,10 +46,13 @@ onMounted(async () => {
           <td>{{ entry.weight }}</td>
           <td>{{ entry.height }}</td>
           <td>{{ entry.bmi }}</td>
-          <td>{{ entry.dateTime }}</td>
+          <td>{{ new Date(entry.dateTime).toLocaleDateString() }}</td>
         </tr>
       </tbody>
     </table>
+    <div class="average-bmi" v-if="bmiData.length > 0">
+      <h4>Average BMI: {{ averageBmi }}</h4>
+    </div>
     <p v-else>No BMI records found.</p>
   </div>
   
@@ -84,5 +98,12 @@ td {
 
 tr:nth-child(even) {
   background: #f3f3f3;
+}
+
+.average-bmi {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
 }
 </style>
