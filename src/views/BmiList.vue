@@ -31,7 +31,7 @@ const averageBmi = computed(() => {
 <template>
   <NavbarPage />
   <div class="bmi-history-container">
-    <h3 v-if="bmiData.length > 0"> BMI History - {{ bmiData[0].name }}</h3>
+    <h3 v-if="bmiData.length > 0"> BMI History - {{ bmiData[bmiData.length -1].name }}</h3>
     <table v-if="bmiData.length > 0">
       <thead>
         <tr>
